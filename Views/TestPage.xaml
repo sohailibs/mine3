@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" NavigationPage.HasNavigationBar="False"  Title="App Usage"
+             x:Class="UsageStatsApp.Views.TestPage">
+    
+    <ContentPage.Content>
+        
+        <StackLayout VerticalOptions="FillAndExpand">
+            <StackLayout >
+
+               
+                <ScrollView>
+                    <StackLayout>
+                        <StackLayout x:Name="stkList"  IsVisible="false">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Margin="10" Padding="10" CornerRadius="12" BackgroundColor="#FAF1FA" >
+
+                                        <StackLayout >
+
+                                            <Label  FontSize="20" >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span  Text="PackageName :" />
+                                                        <Span  Text=" "/>
+                                                        <Span  Text="{Binding PackageName}" TextColor="Purple"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label  FontSize="12">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span  Text="Duration :" />
+                                                        <Span  Text=" "/>
+                                                        <Span  Text="{Binding Duration}"  TextColor="Green"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label  FontSize="10" FontAttributes="Bold" >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span  Text=" Last Time :" />
+                                                        <Span  Text=" "/>
+                                                        <Span  Text="{Binding Time}" TextColor="Black"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Button Text="Open app" CommandParameter="{Binding .}" Clicked="Button_Clicked"/>
+                                            <!--<StackLayout Orientation="Horizontal">
+                                            <Label   FontSize="12" >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span  Text="FirstUsed :" />
+                                                        <Span  Text=" "/>
+                                                        <Span  Text="{Binding FirstUsed}" TextColor="Blue"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label  FontSize="12" >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span  Text="LastUsed :" />
+                                                        <Span  Text=" "/>
+                                                        <Span  Text="{Binding LastUsed}" TextColor="Green"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>-->
+                                        </StackLayout>
+
+                                    </Frame>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Microcharts" TextColor="White" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <forms:ChartView x:Name="MyDonutChart" HeightRequest="125" />
+                            <forms:ChartView x:Name="MyBarChart" HeightRequest="125" />
+                            <forms:ChartView x:Name="MyPointChart" HeightRequest="125" />
+                            <forms:ChartView x:Name="MyRadialGaugeChart" HeightRequest="125" />
+                            <forms:ChartView x:Name="MyLineChart" HeightRequest="125" />
+                        </StackLayout>
+                    </StackLayout>
+                   
+                </ScrollView>
+                <Frame x:Name="emptyLoader" IsVisible="false"  Margin="10" Padding="10" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="12" >
+                    <StackLayout >
+                        <ActivityIndicator Color="Blue"  IsRunning="True" HeightRequest="60" WidthRequest="100" HorizontalOptions="Center"/>
+                        <Label Text="Loading..." FontSize="12" HorizontalOptions="Center" />
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+            <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid  ColumnDefinitions="*,*">
+                    <Button x:Name="btn1" Grid.Column="0" Text=" Submit" HeightRequest="42"  Clicked="btn1_Clicked"/>
+                    <Button x:Name="btn2" Grid.Column="1"  Text=" GetPermission" HeightRequest="42"  Clicked="btn2_Clicked"/>
+                </Grid>
+            </StackLayout>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
